@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
@@ -15,30 +14,15 @@ import { SuccessfullLogin } from "@/components/Auth/AuthDialog/SuccessfulLogin";
 import AuthDialogContext from "@/app/context/AuthDialogContext";
 import { FailedLogin } from "@/components/Auth/AuthDialog/FailedLogin";
 import { UserRegistered } from "@/components/Auth/AuthDialog/UserRegistered";
-import { signOut, useSession } from "next-auth/react";
 import ClientOnly from "@/components/Common/ClientOnly";
 
 const Header: React.FC = () => {
-  const { data: session } = useSession();
-  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [user, setUser] = useState<{ user: unknown } | null>(null);
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const donationInfo = useContext(DonationFormContext);
   const authDialog = useContext(AuthDialogContext);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
-  }, [pathname, mounted]);
 
   useEffect(() => {
     let ticking = false;
@@ -59,12 +43,6 @@ const Header: React.FC = () => {
     document.body.style.overflow = navbarOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [navbarOpen]);
-
-  const handleSignOut = () => {
-    localStorage.removeItem("user");
-    signOut();
-    setUser(null);
-  };
 
   return (
     <header
@@ -99,30 +77,6 @@ const Header: React.FC = () => {
                 <Icon icon={theme === "dark" ? "mdi:weather-sunny" : "mdi:weather-night"} className="text-xl" />
               </button>
             </ClientOnly>
-
-            {!mounted ? (
-              <Link
-                href="/signin"
-                className="hidden lg:block text-sm font-medium text-[#0a3d2e] dark:text-[#C9A227] hover:underline px-2"
-              >
-                Sign In
-              </Link>
-            ) : (user?.user || session?.user) ? (
-              <button
-                type="button"
-                onClick={handleSignOut}
-                className="hidden lg:block text-sm text-gray-600 dark:text-gray-300 hover:text-[#0a3d2e] px-3 py-2"
-              >
-                Sign Out
-              </button>
-            ) : (
-              <Link
-                href="/signin"
-                className="hidden lg:block text-sm font-medium text-[#0a3d2e] dark:text-[#C9A227] hover:underline px-2"
-              >
-                Sign In
-              </Link>
-            )}
 
             <button
               type="button"

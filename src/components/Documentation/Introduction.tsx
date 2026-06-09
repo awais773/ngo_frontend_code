@@ -1,11 +1,5 @@
 "use client"
 import Image from "next/image"
-import nextImg from "/public/images/documentation/Categories=Nextjs.svg"
-import reactImg from "/public/images/documentation/Categories=React.svg"
-import tailwindImg from "/public/images/documentation/Categories=Tailwind.svg"
-import nextauthImg from "/public/images/documentation/nextauth.png"
-import typescriptImg from "/public/images/documentation/Categories=Typescript.svg"
-import axiosImg from "/public/images/documentation/axios.svg"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { useState } from "react"
 import { DocNavigation } from "./DocNavigation"
@@ -16,31 +10,31 @@ export const Introduction = () => {
         {
             id:"1",
             packageName:"NextJs",
-            img:nextImg,
+            img:"/images/documentation/Categories=Nextjs.svg",
             version:"15.1.1"
         },
         {
             id:"2",
             packageName:"React",
-            img:reactImg,
+            img:"/images/documentation/Categories=React.svg",
             version:"19.0.0"
         },
         {
             id:"3",
             packageName:"Tailwindcss",
-            img:tailwindImg,
+            img:"/images/documentation/Categories=Tailwind.svg",
             version:"4.1.2"
         },
         {
             id:"4",
             packageName:"NextAuth",
-            img:nextauthImg ,
+            img:"/images/documentation/nextauth.png",
             version:"4.24.11"
         },
         {
             id:"5",
             packageName:"Typescript",
-            img:typescriptImg ,
+            img:"/images/documentation/Categories=Typescript.svg",
             version:"5.6.3"
         }
     ]
@@ -62,7 +56,7 @@ export const Introduction = () => {
                     PackageVersions && PackageVersions.map((item)=>{
                         return(
                             <div key={item.id} className="lg:w-1/5 text-center  lg:border-e lg:last:border-e-0 border-border dark:border-dark_border">
-                            <Image src={item.img} alt="npm-package"  className=" mx-auto w-10 h-10 " />
+                            <Image src={item.img} alt="npm-package" width={40} height={40} className=" mx-auto w-10 h-10 " />
                             <h5 className="text-2xl font-bold mt-3.5 dark:text-white" >{`v${item.version}`}</h5>
                             <p className="text-base font-medium text-midnight_text dark:text-white/50">{item.packageName}</p>
                         </div>
