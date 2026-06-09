@@ -3,20 +3,29 @@ import Link from "next/link";
 import { HeaderItem } from "../../../../types/menu";
 import { usePathname } from "next/navigation";
 
-const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
-  const [submenuOpen, setSubmenuOpen] = useState(false);
+interface MobileHeaderLinkProps {
+  item: HeaderItem;
+  onNavigate?: () => void;
+}
 
-  const handleToggle = () => {
+const MobileHeaderLink: React.FC<MobileHeaderLinkProps> = ({ item, onNavigate }) => {
+  const [submenuOpen, setSubmenuOpen] = useState(false);
+  const path = usePathname();
+
+  const handleParentClick = (e: React.MouseEvent) => {
+    if (!item.submenu) return;
+    e.preventDefault();
     setSubmenuOpen(!submenuOpen);
   };
 
-  const path = usePathname();
+  const handleNavigate = () => {
+    onNavigate?.();
+  };
 
-  let navString
-
+  let navString;
   const counterLetter = item.label.slice(-1);
   if (counterLetter === "s") {
-    navString = item.label.toLowerCase().substring(item.label.length - 1, - 1);
+    navString = item.label.toLowerCase().substring(item.label.length - 1, -1);
   } else {
     navString = item.label.toLowerCase();
   }
@@ -24,9 +33,9 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   return (
     <div className="relative w-full">
       <Link
-        href={item.href}
-        onClick={item.submenu ? handleToggle : undefined}
-        className={`flex items-center justify-between w-full py-2.5 px-4 text-black rounded-lg dark:text-white/70 focus:outline-hidden font-medium transition-all duration-150  ${path.startsWith(`/${navString}`) ? "bg-[#0a3d2e] text-white dark:text-white" : null} ${path === item.href ? "bg-[#0a3d2e] text-white dark:text-white" : "hover:bg-gray-100 dark:hover:bg-white/10"
+        href={item.submenu ? "#" : item.href}
+        onClick={item.submenu ? handleParentClick : handleNavigate}
+        className={`flex items-center justify-between w-full py-2.5 px-4 text-black rounded-lg dark:text-white/70 focus:outline-hidden font-medium transition-all duration-150  ${path.startsWith(`/${navString}`) ? "bg-darkprimary text-white dark:text-white" : null} ${path === item.href ? "bg-darkprimary text-white dark:text-white" : "hover:bg-gray-100 dark:hover:bg-white/10"
           }`}
       >
         {item.label}
@@ -50,12 +59,13 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
         )}
       </Link>
       {submenuOpen && item.submenu && (
-        <div className="bg-gray-50 dark:bg-[#0a2219]/50 p-2 w-full rounded-lg mt-1 border border-gray-200 dark:border-white/10">
+        <div className="bg-gray-50 dark:bg-darkmode/50 p-2 w-full rounded-lg mt-1 border border-gray-200 dark:border-white/10">
           {item.submenu.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
-              className={`block py-2.5 px-4 text-sm font-medium rounded-md transition-all duration-150 ${path === subItem.href ? "bg-[#0a3d2e] text-white dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-[#0a3d2e] dark:hover:text-[#C9A227] hover:bg-white dark:hover:bg-white/10"}`}
+              onClick={handleNavigate}
+              className={`block py-2.5 px-4 text-sm font-medium rounded-md transition-all duration-150 ${path === subItem.href ? "bg-darkprimary text-white dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-darkprimary dark:hover:text-accent hover:bg-white dark:hover:bg-white/10"}`}
             >
               {subItem.label}
             </Link>

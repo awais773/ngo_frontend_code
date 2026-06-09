@@ -37,23 +37,31 @@
   --z-index-2: 2;
   --z-index-999: 999;
 
-  --color-primary: #0d5c3f;
-  --color-darkprimary: #0a3d2e;
-  --color-secondary: #1a7a55;
-  --color-accent: #C9A227;
-  --color-midnight_text: #263238;
-  --color-muted: #8d97b7;
+  /* Brand green — client color #2e4f2f (Masjid Nabwi dome green) */
+  --color-darkprimary: #2e4f2f;
+  --color-primary: #3a613c;
+  --color-secondary: #456845;
+  --color-accent: #C5A028;
+  --color-gold: #C5A028;
+  --color-gold-light: #E5C76B;
+  --color-gold-dark: #A8871F;
+  --color-beige: #F5EDE0;
+  --color-beige-dark: #E8DFD0;
+  --color-beige-light: #FAF6F0;
+  --color-midnight_text: #2e4f2f;
+  --color-muted: #7A8578;
   --color-error: #ff4d7e;
   --color-warning: #ff6a5b;
-  --color-light_grey: #e9ecef;
-  --color-grey: #f5f7fa;
-  --color-border: #e1e1e1;
-  --color-success: #3cd278;
-  --color-darkmode: #0a2219;
-  --color-darklight: #000f30;
-  --color-dark_border: #203535;
-  --color-dark: #00180f;
-  --color-dustGray: #464A59;
+  --color-light_grey: #F5EDE0;
+  --color-grey: #FAF6F0;
+  --color-border: #E8DFD0;
+  --color-success: #2e4f2f;
+  --color-darkmode: #1f3520;
+  --color-darklight: #243f25;
+  --color-dark_border: #3d5540;
+  --color-dark: #1a2e1b;
+  --color-dustGray: #5C665E;
+  --color-white: #FFFFFF;
 }
 
 /*

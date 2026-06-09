@@ -10,14 +10,14 @@ interface Props {
 
 export default function HomeBlogSection({ blogs }: Props) {
   return (
-    <section className="lg:py-28 py-16 dark:bg-dark" data-aos="fade-up" data-aos-duration="1200">
+    <section className="py-12 lg:py-16 bg-white dark:bg-dark" data-aos="fade-up" data-aos-duration="1200">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <p className="text-[#C9A227] font-semibold text-sm mb-2">Latest News</p>
-            <h2 className="text-3xl font-semibold">From our blog</h2>
+            <p className="text-accent font-semibold text-sm mb-2 uppercase tracking-wide">Latest News</p>
+            <h2 className="text-3xl font-semibold text-darkprimary dark:text-white">From our blog</h2>
           </div>
-          <Link href="/blog" className="text-[#0a3d2e] dark:text-[#C9A227] font-semibold hover:underline hidden sm:block">
+          <Link href="/blog" className="text-darkprimary dark:text-accent font-semibold hover:underline hidden sm:block">
             View all →
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function HomeBlogSection({ blogs }: Props) {
               data-aos="fade-up"
               data-aos-delay={`${index * 100}`}
             >
-              <div className="relative h-48 rounded-xl overflow-hidden mb-4">
+              <div className="relative h-48 rounded-xl overflow-hidden mb-4 border border-beige-dark dark:border-dark_border">
                 <Image
                   src={mediaUrl(blog.featured_image)}
                   alt={blog.title}
@@ -39,14 +39,14 @@ export default function HomeBlogSection({ blogs }: Props) {
                   sizes="(max-width:768px) 100vw, 33vw"
                 />
                 {blog.category && (
-                  <span className="absolute top-3 left-3 bg-[#0a3d2e] text-white text-xs px-2 py-1 rounded">{blog.category}</span>
+                  <span className="absolute top-3 left-3 bg-darkprimary text-white text-xs px-2 py-1 rounded">{blog.category}</span>
                 )}
               </div>
-              <p className="text-xs text-gray-500 mb-2">
+              <p className="text-xs text-dustGray mb-2">
                 {blog.published_at ? format(new Date(blog.published_at), "MMM dd, yyyy") : ""}
               </p>
-              <h3 className="font-bold text-lg group-hover:text-[#0a3d2e] dark:group-hover:text-[#C9A227] line-clamp-2">{blog.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">{blog.excerpt}</p>
+              <h3 className="font-bold text-lg text-midnight_text dark:text-white group-hover:text-darkprimary dark:group-hover:text-accent line-clamp-2">{blog.title}</h3>
+              <p className="text-sm text-dustGray dark:text-gray-400 mt-2 line-clamp-2">{blog.excerpt}</p>
             </Link>
           ))}
         </div>

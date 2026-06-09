@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import DonationFormContext from "@/app/context/donationContext";
@@ -28,15 +27,11 @@ export default function Hero({ sliders, featuredProject }: HeroProps) {
 
   if (!slide) {
     return (
-      <section className="relative min-h-[560px] bg-[#0a3d2e] mt-[72px] flex items-center justify-center text-white">
-        <p>Welcome to NGO</p>
+      <section className="relative min-h-[560px] bg-darkprimary mt-[72px] flex items-center justify-center text-white">
+        <p>Welcome</p>
       </section>
     );
   }
-
-  const goal = featuredProject ? Number(featuredProject.goal_amount) : 0;
-  const raised = featuredProject ? Number(featuredProject.raised_amount) : 0;
-  const pct = goal > 0 ? Math.min(100, (raised / goal) * 100) : 0;
 
   return (
     <section className="relative min-h-[580px] lg:min-h-[640px] mt-[72px] overflow-hidden">
@@ -47,13 +42,12 @@ export default function Hero({ sliders, featuredProject }: HeroProps) {
           style={{ backgroundImage: `url(${mediaUrl(s.image)})` }}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a3d2e]/95 via-[#0a3d2e]/75 to-[#0a3d2e]/50" />
-      {/* Removed top decorative featured panel as requested */}
+      <div className="absolute inset-0 bg-gradient-to-r from-darkprimary/95 via-darkprimary/75 to-darkprimary/50" />
 
       <div className="relative z-10 container mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 items-center min-h-[580px] lg:min-h-[640px]">
         <div className="lg:col-span-7 text-white">
           {slide.subtitle && (
-            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-[#C9A227] text-[#0a3d2e]">
+            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-accent text-darkprimary">
               {slide.subtitle}
             </span>
           )}
@@ -61,16 +55,16 @@ export default function Hero({ sliders, featuredProject }: HeroProps) {
             {slide.title}
           </h1>
           {slide.description && (
-            <p className="text-white/85 text-base sm:text-lg max-w-xl mb-8">{slide.description}</p>
+            <p className="text-white/90 text-base sm:text-lg max-w-xl mb-8">{slide.description}</p>
           )}
           <div className="flex flex-wrap gap-4">
             <Link
               href={slide.button_link || "/donate"}
-              className="bg-gradient-to-r from-[#C9A227] via-[#E5C75C] to-[#D4B645] text-[#0f331f] px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-[#C9A227]/20 hover:from-[#D6AC2D] hover:via-[#E6C75C] hover:to-[#C9A227] transition-all duration-200"
+              className="bg-gradient-to-r from-accent via-gold-light to-gold-dark text-darkprimary px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-accent/25 hover:from-gold-light hover:via-accent hover:to-gold-dark transition-all duration-200"
             >
               {slide.button_text || "Donate Now"}
             </Link>
-            <Link href="/projects" className="border-2 border-white px-8 py-3.5 rounded-xl font-semibold text-white hover:bg-white hover:text-[#0a3d2e] transition-all duration-200">
+            <Link href="/projects" className="border-2 border-white px-8 py-3.5 rounded-xl font-semibold text-white hover:bg-white hover:text-darkprimary transition-all duration-200">
               Our Projects
             </Link>
           </div>
@@ -81,15 +75,13 @@ export default function Hero({ sliders, featuredProject }: HeroProps) {
                   key={i}
                   type="button"
                   onClick={() => setActive(i)}
-                  className={`h-2 rounded-full transition-all ${i === active ? "w-8 bg-[#C9A227]" : "w-2 bg-white/40"}`}
+                  className={`h-2 rounded-full transition-all ${i === active ? "w-8 bg-accent" : "w-2 bg-white/40"}`}
                   aria-label={`Slide ${i + 1}`}
                 />
               ))}
             </div>
           )}
         </div>
-
-        {/* right column intentionally left empty for now */}
       </div>
     </section>
   );

@@ -6,15 +6,15 @@ interface LogoProps {
   showText?: boolean;
 }
 
-const Logo: React.FC<LogoProps> = ({ variant = "dark", showText = true }) => {
+const Logo: React.FC<LogoProps> = ({ variant = "dark", showText = false }) => {
   const textClass =
-    variant === "light" ? "text-white" : "text-[#0a3d2e] dark:text-white";
+    variant === "light" ? "text-white" : "text-darkprimary dark:text-white";
 
   return (
     <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
       <Image
         src="/images/logo/ngo-logo-transparent.png"
-        alt="NGO"
+        alt="Organization logo"
         width={72}
         height={72}
         priority
@@ -22,7 +22,7 @@ const Logo: React.FC<LogoProps> = ({ variant = "dark", showText = true }) => {
       />
       {showText && (
         <span className={`text-xl font-bold tracking-wide ${textClass}`}>
-          NGO
+          Charity
         </span>
       )}
     </Link>
