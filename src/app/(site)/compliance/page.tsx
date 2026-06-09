@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import HeroSub from "@/components/SharedComponent/HeroSub";
 import Link from "next/link";
-import { api, ComplianceReport } from "@/lib/api";
+import { api, ComplianceReport, mediaUrl } from "@/lib/api";
 
 export const metadata: Metadata = { title: "Compliance & Reports" };
 
@@ -12,8 +12,6 @@ export default async function CompliancePage() {
   } catch {
     reports = [];
   }
-
-  const backend = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   return (
     <>
@@ -31,7 +29,7 @@ export default async function CompliancePage() {
                 {r.description && <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm">{r.description}</p>}
                 {r.file_path && (
                   <a
-                    href={`${backend}${r.file_path}`}
+                    href={mediaUrl(r.file_path)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-4 text-primary font-semibold hover:underline"
