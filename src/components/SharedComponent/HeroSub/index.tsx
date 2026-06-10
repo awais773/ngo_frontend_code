@@ -10,7 +10,7 @@ const HeroSub: FC<HeroSubProps> = ({ title, bgImage }) => {
 
   return (
     <section
-      className="relative py-12 sm:py-16 bg-no-repeat bg-center bg-cover mt-[72px]"
+      className="relative py-12 sm:py-16 bg-no-repeat bg-center bg-cover mt-[106px]"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="absolute inset-0 bg-[#0a3d2e]/80 z-0" />

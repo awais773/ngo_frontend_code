@@ -27,14 +27,14 @@ export default function Hero({ sliders, featuredProject }: HeroProps) {
 
   if (!slide) {
     return (
-      <section className="relative min-h-[560px] bg-darkprimary mt-[72px] flex items-center justify-center text-white">
+      <section className="relative min-h-[560px] bg-darkprimary mt-[106px] flex items-center justify-center text-white">
         <p>Welcome</p>
       </section>
     );
   }
 
   return (
-    <section className="relative min-h-[580px] lg:min-h-[640px] mt-[72px] overflow-hidden">
+    <section className="relative min-h-[580px] lg:min-h-[640px] mt-[106px] overflow-hidden">
       {sliders.map((s, i) => (
         <div
           key={s.id}

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../Header/Logo";
-import { getSettings } from "@/lib/api";
 
 const footerNav = [
   { link: "Our Work", href: "/our-work" },
@@ -16,8 +15,7 @@ const footerNav = [
 ];
 
 const Footer = async () => {
-  const settings = await getSettings();
-  const email = settings.contact_email || "info@charity.org";
+  const email = "info@myprophetpbuh.org";
   const phone = "+92 1234567890";
   const address = "House 45, Street 12, Model Town, Lahore, Punjab 54700, Pakistan";
 
@@ -27,7 +25,7 @@ const Footer = async () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12">
           <div className="md:col-span-5">
             <div className="[&_span]:!text-white">
-              <Logo variant="light" showText={false} />
+              <Logo size="lg" />
             </div>
             <p className="text-white/75 mt-5 mb-6 max-w-sm text-sm leading-relaxed">
               Sharing light through humanitarian relief, education, healthcare, and community support worldwide.

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
+import TopBar from "./TopBar";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
 import { useTheme } from "next-themes";
@@ -51,16 +52,18 @@ const Header: React.FC = () => {
   }, [navbarOpen]);
 
   return (
-    <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+    <header className="fixed top-0 z-50 w-full transition-all duration-300">
+      <TopBar />
+      <div
+        className={`w-full ${
         sticky
           ? "bg-white/98 dark:bg-dark/98 backdrop-blur-lg shadow-lg border-b border-gray-200/50 dark:border-white/5"
           : "bg-white dark:bg-dark border-b border-gray-100 dark:border-white/5"
       }`}
-    >
+      >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="flex items-center justify-between h-[70px] gap-4">
-          <Logo showText={false} />
+          <Logo size="sm" />
 
           <nav className="hidden xl:flex items-center gap-1 flex-1 justify-center">
             {headerData.map((item, index) => (
@@ -97,6 +100,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      </div>
 
       {navbarOpen && (
         <>
@@ -106,7 +110,7 @@ const Header: React.FC = () => {
             className="fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-dark shadow-2xl z-50 xl:hidden overflow-y-auto animate-in slide-in-from-right duration-300"
           >
             <div className="flex items-center justify-between p-5 border-b dark:border-white/10 bg-gradient-to-r from-white to-gray-50 dark:from-darkmode dark:to-dark">
-              <Logo showText={false} />
+              <Logo size="sm" />
               <button type="button" onClick={() => setNavbarOpen(false)} aria-label="Close" className="p-2 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-colors">
                 <Icon icon="mdi:close" className="text-2xl" />
               </button>

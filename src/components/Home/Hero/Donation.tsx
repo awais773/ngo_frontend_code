@@ -19,7 +19,7 @@ export const Donation = () => {
     return (
         <>
         <div className="mb-10 text-center mx-auto inline-block max-w-[170px]">
-          <Logo />
+          <Logo size="lg" />
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="mb-[22px]">

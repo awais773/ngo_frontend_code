@@ -56,7 +56,7 @@ const Signin = () => {
   return (
     <div>
       <div className='mb-10 text-center mx-auto inline-block'>
-        <Logo />
+        <Logo size="lg" />
       </div>
 
       <SocialSignIn />
