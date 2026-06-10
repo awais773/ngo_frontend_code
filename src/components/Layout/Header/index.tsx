@@ -63,7 +63,7 @@ const Header: React.FC = () => {
       >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="flex items-center justify-between h-[70px] gap-4">
-          <Logo size="sm" />
+          <Logo variant="text" size="sm" />
 
           <nav className="hidden xl:flex items-center gap-1 flex-1 justify-center">
             {headerData.map((item, index) => (
@@ -110,7 +110,7 @@ const Header: React.FC = () => {
             className="fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-dark shadow-2xl z-50 xl:hidden overflow-y-auto animate-in slide-in-from-right duration-300"
           >
             <div className="flex items-center justify-between p-5 border-b dark:border-white/10 bg-gradient-to-r from-white to-gray-50 dark:from-darkmode dark:to-dark">
-              <Logo size="sm" />
+              <Logo variant="text" size="sm" />
               <button type="button" onClick={() => setNavbarOpen(false)} aria-label="Close" className="p-2 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-colors">
                 <Icon icon="mdi:close" className="text-2xl" />
               </button>

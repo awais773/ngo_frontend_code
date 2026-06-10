@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import DonationFormContext from "@/app/context/donationContext";
+import { useEffect, useState } from "react";
+import ProphetDomeLogo from "@/components/SharedComponent/ProphetDomeLogo";
 import type { Project, Slider } from "@/lib/api";
 import { mediaUrl } from "@/lib/api";
 
@@ -11,8 +11,7 @@ interface HeroProps {
   featuredProject?: Project | null;
 }
 
-export default function Hero({ sliders, featuredProject }: HeroProps) {
-  const donationInfo = useContext(DonationFormContext);
+export default function Hero({ sliders }: HeroProps) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -81,6 +80,10 @@ export default function Hero({ sliders, featuredProject }: HeroProps) {
               ))}
             </div>
           )}
+        </div>
+
+        <div className="lg:col-span-5 flex items-center justify-center">
+          <ProphetDomeLogo size="hero" />
         </div>
       </div>
     </section>
