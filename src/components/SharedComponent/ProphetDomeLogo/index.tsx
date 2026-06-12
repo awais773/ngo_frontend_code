@@ -4,6 +4,7 @@ import Link from "next/link";
 interface ProphetDomeLogoProps {
   size?: "sm" | "md" | "lg" | "hero";
   linked?: boolean;
+  animated?: boolean;
   className?: string;
 }
 
@@ -24,14 +25,11 @@ const imageSizeClasses = {
 const ProphetDomeLogo: React.FC<ProphetDomeLogoProps> = ({
   size = "md",
   linked = true,
+  animated = true,
   className = "",
 }) => {
   const content = (
-    <div className={`prophet-dome-wrap relative inline-flex ${wrapSizeClasses[size]} ${className}`}>
-      <div
-        className="pointer-events-none absolute inset-0 rounded-full bg-accent/20 blur-3xl scale-90"
-        aria-hidden="true"
-      />
+    <div className={`relative inline-flex ${wrapSizeClasses[size]} ${className}`}>
       <Image
         src="/images/logo/prophet-dome-transparent.png"
         alt="Green Dome of the Prophet's Mosque"
@@ -39,8 +37,18 @@ const ProphetDomeLogo: React.FC<ProphetDomeLogoProps> = ({
         height={480}
         priority={size === "hero"}
         unoptimized
-        className={`prophet-dome-blink relative mx-auto h-auto object-contain drop-shadow-[0_0_28px_rgba(197,160,40,0.4)] ${imageSizeClasses[size]}`}
+        className={`relative mx-auto h-auto object-contain ${imageSizeClasses[size]} ${
+          animated
+            ? "prophet-dome-blink drop-shadow-[0_0_28px_rgba(197,160,40,0.4)]"
+            : ""
+        }`}
       />
+      {animated && (
+        <div
+          className="pointer-events-none absolute inset-0 rounded-full bg-accent/20 blur-3xl scale-90"
+          aria-hidden="true"
+        />
+      )}
     </div>
   );
 

@@ -72,6 +72,13 @@ const Header: React.FC = () => {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/signup"
+              className="hidden lg:inline-flex items-center rounded-lg bg-darkprimary px-4 py-2 text-sm font-semibold text-white hover:bg-primary transition-colors"
+            >
+              Become Member
+            </Link>
+
             <ClientOnly
               fallback={
                 <span className="hidden sm:block h-9 w-9" aria-hidden="true" />
@@ -107,23 +114,43 @@ const Header: React.FC = () => {
           <div className="fixed inset-0 bg-black/40 z-40 xl:hidden" onClick={() => setNavbarOpen(false)} />
           <div
             ref={mobileMenuRef}
-            className="fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-dark shadow-2xl z-50 xl:hidden overflow-y-auto animate-in slide-in-from-right duration-300"
+            className="fixed top-0 right-0 z-50 h-full w-full max-w-sm overflow-y-auto bg-white shadow-2xl dark:bg-dark xl:hidden animate-in slide-in-from-right duration-300"
           >
-            <div className="flex items-center justify-between p-5 border-b dark:border-white/10 bg-gradient-to-r from-white to-gray-50 dark:from-darkmode dark:to-dark">
+            <div className="flex h-[70px] items-center justify-between border-b border-gray-100 px-4 dark:border-white/10">
               <Logo variant="text" size="sm" />
-              <button type="button" onClick={() => setNavbarOpen(false)} aria-label="Close" className="p-2 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-colors">
+              <button
+                type="button"
+                onClick={() => setNavbarOpen(false)}
+                aria-label="Close"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/10"
+              >
                 <Icon icon="mdi:close" className="text-2xl" />
               </button>
             </div>
-            <nav className="p-5 flex flex-col gap-1.5">
+            <nav className="flex flex-col gap-1 p-4">
               {headerData.map((item, index) => (
                 <MobileHeaderLink key={index} item={item} onNavigate={() => setNavbarOpen(false)} />
               ))}
             </nav>
-            <div className="p-5 border-t dark:border-white/10 space-y-3 bg-gradient-to-t from-gray-50 to-transparent dark:from-darkmode/30 dark:to-transparent">
-              <Link href="/contact" onClick={() => setNavbarOpen(false)} className="block text-center text-sm font-medium text-gray-600 dark:text-gray-400 py-2.5 hover:text-darkprimary dark:hover:text-accent transition-colors">
-                Contact Us
+            <div className="space-y-2 border-t border-gray-100 p-4 dark:border-white/10">
+              <Link
+                href="/signup"
+                onClick={() => setNavbarOpen(false)}
+                className="inline-flex w-full items-center justify-center rounded-lg bg-darkprimary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary"
+              >
+                Become Member
               </Link>
+              <ClientOnly>
+                <button
+                  type="button"
+                  aria-label="Toggle theme"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg px-3.5 py-2.5 text-[14px] font-semibold text-gray-700 transition-all duration-200 hover:bg-darkprimary/8 hover:text-darkprimary dark:text-gray-300 dark:hover:bg-accent/10 dark:hover:text-accent"
+                >
+                  <Icon icon={theme === "dark" ? "mdi:weather-sunny" : "mdi:weather-night"} className="text-lg" />
+                  {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                </button>
+              </ClientOnly>
             </div>
           </div>
         </>

@@ -35,6 +35,7 @@ export interface MediaItem {
   type: string;
   title: string;
   description?: string;
+  caption?: string;
   url: string;
   thumbnail?: string;
 }
@@ -115,15 +116,19 @@ export interface HomeData {
   };
 }
 
-async function fetchApi<T>(path: string, options?: RequestInit): Promise<T> {
+async function fetchApi<T>(
+  path: string,
+  options?: RequestInit & { next?: { revalidate?: number; tags?: string[] } }
+): Promise<T> {
+  const { next: nextOptions, ...rest } = options || {};
   const res = await fetch(`${API_BASE}${path}`, {
-    ...options,
+    ...rest,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      ...options?.headers,
+      ...rest?.headers,
     },
-    next: { revalidate: 60 },
+    next: { revalidate: 60, ...nextOptions },
   });
 
   if (!res.ok) {
@@ -147,7 +152,10 @@ export const api = {
   projects: () => fetchApi<Paginated<Project>>("/projects"),
   project: (slug: string) => fetchApi<Project>(`/projects/${slug}`),
   boardMembers: () => fetchApi<BoardMember[]>("/board-members"),
-  media: (type?: string) => fetchApi<MediaItem[]>(`/media${type ? `?type=${type}` : ""}`),
+  media: (type?: string) =>
+    fetchApi<MediaItem[]>(`/media${type ? `?type=${type}` : ""}`, {
+      next: { revalidate: 300, tags: [`media-${type || "all"}`] },
+    }),
   compliance: () => fetchApi<ComplianceReport[]>("/compliance"),
   donationsReceived: () => fetchApi("/donations/received"),
   submitDonation: (data: object) =>

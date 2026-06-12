@@ -25,8 +25,8 @@ export const headerData: HeaderItem[] = [
     label: "Media",
     href: "#",
     submenu: [
-      { label: "Gallery", href: "/media?type=image" },
-      { label: "Videos", href: "/media?type=video" },
+      { label: "Photos", href: "/media/photos" },
+      { label: "Videos", href: "/media/videos" },
     ],
   },
   {
@@ -35,14 +35,6 @@ export const headerData: HeaderItem[] = [
     submenu: [
       { label: "Zakat Calculator", href: "/zakat-calculator" },
       { label: "Fitrana Calculator", href: "/fitrana-calculator" },
-    ],
-  },
-  {
-    label: "More",
-    href: "#",
-    submenu: [
-      { label: "Compliance", href: "/compliance" },
-      { label: "Reports", href: "/reports" },
     ],
   },
   { label: "Contact", href: "/contact" },

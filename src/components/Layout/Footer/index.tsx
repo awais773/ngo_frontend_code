@@ -6,12 +6,15 @@ const footerNav = [
   { link: "Our Work", href: "/our-work" },
   { link: "Projects", href: "/projects" },
   { link: "Events", href: "/events" },
+  { link: "Photos", href: "/media/photos" },
+  { link: "Videos", href: "/media/videos" },
   { link: "Blogs", href: "/blog" },
   { link: "Donate", href: "/donate" },
   { link: "Zakat Calculator", href: "/zakat-calculator" },
   { link: "About", href: "/about" },
   { link: "Contact", href: "/contact" },
   { link: "Compliance", href: "/compliance" },
+  { link: "Reports", href: "/reports" },
 ];
 
 const Footer = async () => {
@@ -24,7 +27,7 @@ const Footer = async () => {
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12">
           <div className="md:col-span-5">
-            <ProphetDomeLogo size="lg" />
+            <ProphetDomeLogo size="lg" animated={false} />
             <p className="text-white/75 mt-5 mb-6 max-w-sm text-sm leading-relaxed">
               Sharing light through humanitarian relief, education, healthcare, and community support worldwide.
             </p>
