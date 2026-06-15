@@ -63,7 +63,7 @@ const Header: React.FC = () => {
       >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="flex items-center justify-between h-[70px] gap-4">
-          <Logo variant="text" size="sm" />
+          <Logo size="sm" />
 
           <nav className="hidden xl:flex items-center gap-1 flex-1 justify-center">
             {headerData.map((item, index) => (
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
-              href="/signup"
+              href="/"
               className="hidden lg:inline-flex items-center rounded-lg bg-darkprimary px-4 py-2 text-sm font-semibold text-white hover:bg-primary transition-colors"
             >
               Become Member
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                 type="button"
                 aria-label="Toggle theme"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="hidden sm:flex h-9 w-9 items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10"
+                className="hidden h-9 w-9 items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10"
               >
                 <Icon icon={theme === "dark" ? "mdi:weather-sunny" : "mdi:weather-night"} className="text-xl" />
               </button>
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
             className="fixed top-0 right-0 z-50 h-full w-full max-w-sm overflow-y-auto bg-white shadow-2xl dark:bg-dark xl:hidden animate-in slide-in-from-right duration-300"
           >
             <div className="flex h-[70px] items-center justify-between border-b border-gray-100 px-4 dark:border-white/10">
-              <Logo variant="text" size="sm" />
+              <Logo size="sm" />
               <button
                 type="button"
                 onClick={() => setNavbarOpen(false)}
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
             </nav>
             <div className="space-y-2 border-t border-gray-100 p-4 dark:border-white/10">
               <Link
-                href="/signup"
+                href="/"
                 onClick={() => setNavbarOpen(false)}
                 className="inline-flex w-full items-center justify-center rounded-lg bg-darkprimary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary"
               >
@@ -145,7 +145,7 @@ const Header: React.FC = () => {
                   type="button"
                   aria-label="Toggle theme"
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg px-3.5 py-2.5 text-[14px] font-semibold text-gray-700 transition-all duration-200 hover:bg-darkprimary/8 hover:text-darkprimary dark:text-gray-300 dark:hover:bg-accent/10 dark:hover:text-accent"
+                  className="hidden w-full items-center justify-center gap-2 rounded-lg px-3.5 py-2.5 text-[14px] font-semibold text-gray-700 transition-all duration-200 hover:bg-darkprimary/8 hover:text-darkprimary dark:text-gray-300 dark:hover:bg-accent/10 dark:hover:text-accent"
                 >
                   <Icon icon={theme === "dark" ? "mdi:weather-sunny" : "mdi:weather-night"} className="text-lg" />
                   {theme === "dark" ? "Light Mode" : "Dark Mode"}

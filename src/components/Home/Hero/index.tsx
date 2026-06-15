@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import ProphetDomeLogo from "@/components/SharedComponent/ProphetDomeLogo";
 import type { Project, Slider } from "@/lib/api";
 import { mediaUrl } from "@/lib/api";
 
@@ -43,8 +42,8 @@ export default function Hero({ sliders }: HeroProps) {
       ))}
       <div className="absolute inset-0 bg-gradient-to-r from-darkprimary/95 via-darkprimary/75 to-darkprimary/50" />
 
-      <div className="relative z-10 container mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 items-center min-h-[580px] lg:min-h-[640px]">
-        <div className="lg:col-span-7 text-white">
+      <div className="relative z-10 container mx-auto px-4 py-14 lg:py-20 flex items-center min-h-[580px] lg:min-h-[640px]">
+        <div className="max-w-2xl text-white">
           {slide.subtitle && (
             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-accent text-darkprimary">
               {slide.subtitle}
@@ -80,10 +79,6 @@ export default function Hero({ sliders }: HeroProps) {
               ))}
             </div>
           )}
-        </div>
-
-        <div className="lg:col-span-5 flex items-center justify-center">
-          <ProphetDomeLogo size="hero" />
         </div>
       </div>
     </section>

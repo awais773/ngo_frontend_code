@@ -1,53 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Libre_Baskerville } from "next/font/google";
-
-const logoFont = Libre_Baskerville({
-  subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-});
 
 interface LogoProps {
   size?: "sm" | "md" | "lg";
-  variant?: "text" | "image";
 }
 
 const imageSizeClasses = {
-  sm: "h-12 w-12 sm:h-14 sm:w-14",
-  md: "h-16 w-16 sm:h-[72px] sm:w-[72px]",
-  lg: "h-20 w-20 sm:h-24 sm:w-24",
+  sm: "h-10 sm:h-12 w-auto max-w-[190px] sm:max-w-[230px]",
+  md: "h-14 sm:h-16 w-auto max-w-[240px]",
+  lg: "h-16 sm:h-20 w-auto max-w-[280px]",
 };
 
-const textSizeClasses = {
-  sm: "text-[1.2rem] sm:text-[1.45rem]",
-  md: "text-2xl sm:text-[1.75rem]",
-  lg: "text-3xl sm:text-4xl",
-};
-
-const Logo: React.FC<LogoProps> = ({ size = "md", variant = "image" }) => {
-  if (variant === "text") {
-    return (
-      <Link href="/" className="inline-flex shrink-0 group items-center">
-        <span
-          className={`logo-text-glow ${logoFont.className} uppercase tracking-[-0.02em] leading-none text-darkprimary antialiased ${textSizeClasses[size]}`}
-        >
-          MY PROPHET
-        </span>
-      </Link>
-    );
-  }
-
+const Logo: React.FC<LogoProps> = ({ size = "md" }) => {
   return (
     <Link href="/" className="inline-flex shrink-0 group items-center">
       <Image
-        src="/images/logo/my-prophet-logo.png"
+        src="/images/logo/my-prophet-header-logo-transparent.png"
         alt="My Prophet"
-        width={120}
-        height={120}
+        width={320}
+        height={88}
         priority
         unoptimized
-        className={`${imageSizeClasses[size]} w-auto object-contain transition-transform group-hover:scale-105`}
+        className={`${imageSizeClasses[size]} object-contain transition-transform group-hover:scale-[1.02]`}
       />
     </Link>
   );
