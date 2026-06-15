@@ -7,8 +7,8 @@ interface LogoProps {
 }
 
 const logoSources = {
-  header: "/images/logo/my-prophet-header-logo-transparent.png",
-  footer: "/images/logo/my-prophet-footer-logo-transparent.png",
+  header: "/images/logo/my-prophet-header-logo-transparent.png?v=2",
+  footer: "/images/logo/my-prophet-footer-logo-transparent.png?v=2",
 };
 
 const imageSizeClasses = {
