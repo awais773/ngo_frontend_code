@@ -40,10 +40,9 @@ export default function Hero({ sliders }: HeroProps) {
           style={{ backgroundImage: `url(${mediaUrl(s.image)})` }}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-darkprimary/95 via-darkprimary/75 to-darkprimary/50" />
 
       <div className="relative z-10 container mx-auto px-4 py-14 lg:py-20 flex items-center min-h-[580px] lg:min-h-[640px]">
-        <div className="max-w-2xl text-white">
+        <div className="max-w-2xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
           {slide.subtitle && (
             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-accent text-darkprimary">
               {slide.subtitle}
