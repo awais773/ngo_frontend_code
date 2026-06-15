@@ -1,21 +1,26 @@
 import HeroSub from "@/components/SharedComponent/HeroSub";
-import EventList from "@/components/Events/EventList";
+import EventsShowcase from "@/components/Events/EventsShowcase";
 import Volunteer from "@/components/SharedComponent/Volunteer";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
-    title: "Event List | NGO",
+  title: "Events | My Prophet",
 };
 
 const Page = () => {
-    return (
-        <>
-            <HeroSub
-                title="Event List"
-            />
-            <EventList />
-            <Volunteer />
-        </>
-    )
-}
+  return (
+    <>
+      <HeroSub
+        title="Events"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Events" },
+        ]}
+      />
+      <EventsShowcase />
+      <Volunteer />
+    </>
+  );
+};
 
 export default Page;

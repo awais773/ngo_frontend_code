@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import ProphetDomeLogo from "@/components/SharedComponent/ProphetDomeLogo";
+import Logo from "../Header/Logo";
 
 const footerNav = [
   { link: "Our Work", href: "/our-work" },
@@ -27,7 +27,7 @@ const Footer = async () => {
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12">
           <div className="md:col-span-5">
-            <ProphetDomeLogo size="lg" animated={false} />
+            <Logo variant="footer" size="lg" />
             <p className="text-white/75 mt-5 mb-6 max-w-sm text-sm leading-relaxed">
               Sharing light through humanitarian relief, education, healthcare, and community support worldwide.
             </p>
