@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { brandLogos } from "@/config/brand";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg";
   variant?: "header" | "footer";
 }
-
-const logoSources = {
-  header: "/images/logo/my-prophet-header-logo-transparent.png?v=3",
-  footer: "/images/logo/my-prophet-footer-logo-transparent.png?v=2",
-};
 
 const imageSizeClasses = {
   header: {
@@ -25,10 +21,12 @@ const imageSizeClasses = {
 };
 
 const Logo: React.FC<LogoProps> = ({ size = "md", variant = "header" }) => {
+  const src = variant === "header" ? brandLogos.header : brandLogos.footer;
+
   return (
     <Link href="/" className="inline-flex shrink-0 group items-center">
       <Image
-        src={logoSources[variant]}
+        src={src}
         alt="My Prophet"
         width={320}
         height={88}
