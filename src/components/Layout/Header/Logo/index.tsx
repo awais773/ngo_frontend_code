@@ -13,7 +13,7 @@ interface LogoProps {
 
 const imageSizeClasses = {
   header: {
-    sm: "h-12 sm:h-[52px] w-auto max-w-[240px] sm:max-w-[280px] lg:max-w-[320px]",
+    sm: "h-[54px] sm:h-[60px] w-auto max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]",
     md: "h-14 sm:h-16 w-auto max-w-[280px]",
     lg: "h-16 sm:h-[72px] w-auto max-w-[340px]",
   },
@@ -57,7 +57,7 @@ const Logo: React.FC<LogoProps> = ({ size = "md", variant = "header" }) => {
   }
 
   return (
-    <Link href="/" className="inline-flex shrink-0 group items-center min-w-[140px] sm:min-w-[180px]">
+    <Link href="/" className="inline-flex shrink-0 group items-center min-w-[160px] sm:min-w-[200px]">
       <ClientOnly fallback={logoImage}>{logoImage}</ClientOnly>
     </Link>
   );

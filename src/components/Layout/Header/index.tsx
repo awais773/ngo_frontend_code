@@ -57,8 +57,8 @@ const Header: React.FC = () => {
       <div
         className={`w-full ${
         sticky
-          ? "bg-white/98 dark:bg-dark/98 backdrop-blur-lg shadow-lg border-b border-gray-200/50 dark:border-white/5"
-          : "bg-white dark:bg-dark border-b border-gray-100 dark:border-white/5"
+          ? "bg-white/98 dark:bg-dark/98 backdrop-blur-lg shadow-lg border-b-2 border-accent"
+          : "bg-white dark:bg-dark border-b-2 border-accent"
       }`}
       >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
