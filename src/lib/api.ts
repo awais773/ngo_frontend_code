@@ -18,6 +18,17 @@ export interface Paginated<T> {
   data: T[];
   current_page?: number;
   last_page?: number;
+  per_page?: number;
+  total?: number;
+}
+
+export interface DailyActivity {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  images?: string[];
+  activity_date: string;
 }
 
 export interface BoardMember {
@@ -152,6 +163,14 @@ export const api = {
   projects: () => fetchApi<Paginated<Project>>("/projects"),
   project: (slug: string) => fetchApi<Project>(`/projects/${slug}`),
   boardMembers: () => fetchApi<BoardMember[]>("/board-members"),
+  dailyActivities: (params?: { category?: string; page?: number }) => {
+    const q = new URLSearchParams();
+    if (params?.category) q.set("category", params.category);
+    if (params?.page && params.page > 1) q.set("page", String(params.page));
+    const qs = q.toString();
+    return fetchApi<Paginated<DailyActivity>>(`/daily-activities${qs ? `?${qs}` : ""}`);
+  },
+  dailyActivityCategories: () => fetchApi<string[]>("/daily-activities/categories"),
   media: (type?: string) =>
     fetchApi<MediaItem[]>(`/media${type ? `?type=${type}` : ""}`, {
       next: { revalidate: 300, tags: [`media-${type || "all"}`] },
@@ -164,12 +183,21 @@ export const api = {
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(data),
     }).then((r) => r.json()),
-  submitContact: (data: object) =>
-    fetch(`${API_BASE}/contact`, {
+  submitContact: async (data: object) => {
+    const res = await fetch(`${API_BASE}/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(data),
-    }).then((r) => r.json()),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      const message =
+        json.message ||
+        (json.errors ? Object.values(json.errors).flat().join(" ") : "Failed to send message");
+      throw new Error(message);
+    }
+    return json;
+  },
 };
 
 export function mediaUrl(path?: string | null): string {

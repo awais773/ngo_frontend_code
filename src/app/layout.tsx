@@ -20,7 +20,7 @@ export const metadata = {
   description: "Sharing the light of the Prophet — humanitarian relief, donations, zakat, and community support.",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.ico" },
       { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { url: "/images/logo/my-prophet-logo.png", type: "image/png", sizes: "512x512" },
     ],
