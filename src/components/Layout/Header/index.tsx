@@ -18,6 +18,9 @@ import { FailedLogin } from "@/components/Auth/AuthDialog/FailedLogin";
 import { UserRegistered } from "@/components/Auth/AuthDialog/UserRegistered";
 import ClientOnly from "@/components/Common/ClientOnly";
 
+const memberButtonClass =
+  "inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-bold text-darkprimary shadow-sm border border-gold-dark/30 hover:bg-gold-light hover:border-gold-light transition-all duration-200";
+
 const Header: React.FC = () => {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
@@ -74,7 +77,7 @@ const Header: React.FC = () => {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/"
-              className="hidden lg:inline-flex items-center rounded-lg bg-darkprimary px-4 py-2 text-sm font-semibold text-white hover:bg-primary transition-colors"
+              className={`hidden lg:inline-flex ${memberButtonClass}`}
             >
               Become Member
             </Link>
@@ -136,7 +139,7 @@ const Header: React.FC = () => {
               <Link
                 href="/"
                 onClick={() => setNavbarOpen(false)}
-                className="inline-flex w-full items-center justify-center rounded-lg bg-darkprimary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary"
+                className={`w-full py-2.5 ${memberButtonClass}`}
               >
                 Become Member
               </Link>
