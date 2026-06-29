@@ -1,5 +1,5 @@
 const PRODUCTION_API_URL = "https://ngo.singsavatech.com/api/v1";
-const PRODUCTION_BACKEND_URL = "https://ngo.singsavatech.com/";
+const PRODUCTION_BACKEND_URL = "https://ngo.singsavatech.com";
 const LOCAL_API_URL = "http://localhost:8000/api/v1";
 const LOCAL_BACKEND_URL = "http://localhost:8000";
 
@@ -205,10 +205,12 @@ export function mediaUrl(path?: string | null): string {
   if (path.startsWith("http")) return path;
   // Paths served from Next.js /public (e.g. /images/causes/cause-1.jpg)
   if (path.startsWith("/images/")) return path;
-  const backend =
+  const backend = (
     process.env.NEXT_PUBLIC_BACKEND_URL ||
-    (process.env.NODE_ENV === "production" ? PRODUCTION_BACKEND_URL : LOCAL_BACKEND_URL);
-  return `${backend}${path.startsWith("/") ? path : `/${path}`}`;
+    (process.env.NODE_ENV === "production" ? PRODUCTION_BACKEND_URL : LOCAL_BACKEND_URL)
+  ).replace(/\/+$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${backend}${normalizedPath}`;
 }
 
 export async function getHomeData(): Promise<HomeData | null> {
