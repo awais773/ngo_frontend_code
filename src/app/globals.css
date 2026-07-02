@@ -208,11 +208,24 @@ body {
 
 .brand-hero-overlay {
   background: linear-gradient(
-    105deg,
-    rgba(27, 43, 91, 0.9) 0%,
-    rgba(27, 43, 91, 0.72) 42%,
-    rgba(0, 174, 239, 0.38) 100%
+    90deg,
+    rgba(27, 43, 91, 0.78) 0%,
+    rgba(27, 43, 91, 0.42) 34%,
+    rgba(27, 43, 91, 0.12) 52%,
+    transparent 68%
   );
+}
+
+.brand-hero-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(15, 26, 56, 0.35) 100%
+  );
+  pointer-events: none;
 }
 
 .brand-section-overlay {

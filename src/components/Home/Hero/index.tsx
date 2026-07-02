@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Project, Slider } from "@/lib/api";
@@ -32,19 +33,31 @@ export default function Hero({ sliders }: HeroProps) {
   }
 
   return (
-    <section className="relative min-h-[580px] lg:min-h-[640px] mt-[106px] overflow-hidden">
+    <section className="relative min-h-[580px] lg:min-h-[640px] mt-[106px] overflow-hidden bg-darkprimary">
       {sliders.map((s, i) => (
         <div
           key={s.id}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}
-          style={{ backgroundImage: `url(${mediaUrl(s.image)})` }}
-        />
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            i === active ? "opacity-100" : "opacity-0"
+          }`}
+          aria-hidden={i !== active}
+        >
+          <Image
+            src={mediaUrl(s.image)}
+            alt={s.title}
+            fill
+            priority={i === 0}
+            quality={92}
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
       ))}
 
-      <div className="absolute inset-0 brand-hero-overlay z-[1]" />
+      <div className="absolute inset-0 brand-hero-overlay z-[1] pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-4 py-14 lg:py-20 flex items-center min-h-[580px] lg:min-h-[640px]">
-        <div className="max-w-2xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
+        <div className="max-w-2xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
           {slide.subtitle && (
             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-secondary/90 text-white border border-white/20">
               {slide.subtitle}
@@ -54,7 +67,7 @@ export default function Hero({ sliders }: HeroProps) {
             {slide.title}
           </h1>
           {slide.description && (
-            <p className="text-white/90 text-base sm:text-lg max-w-xl mb-8">{slide.description}</p>
+            <p className="text-white/95 text-base sm:text-lg max-w-xl mb-8">{slide.description}</p>
           )}
           <div className="flex flex-wrap gap-4">
             <Link
@@ -74,7 +87,9 @@ export default function Hero({ sliders }: HeroProps) {
                   key={i}
                   type="button"
                   onClick={() => setActive(i)}
-                  className={`h-2 rounded-full transition-all ${i === active ? "w-8 bg-gradient-to-r from-accent to-secondary" : "w-2 bg-white/40"}`}
+                  className={`h-2 rounded-full transition-all ${
+                    i === active ? "w-8 bg-gradient-to-r from-accent to-secondary" : "w-2 bg-white/40"
+                  }`}
                   aria-label={`Slide ${i + 1}`}
                 />
               ))}
