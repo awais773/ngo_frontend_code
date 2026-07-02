@@ -1,12 +1,16 @@
 import { helpdata } from "@/app/api/data";
+import BrandEyebrow from "@/components/Common/BrandEyebrow";
 import Image from "next/image";
+
+const iconWrapOnly = ["brand-icon-wrap-navy", "brand-icon-wrap-blue", "brand-icon-wrap-green"] as const;
+const cardTopOnly = ["brand-card-accent-navy", "brand-card-accent-blue", "brand-card-accent-green"] as const;
 
 const Help = () => {
   return (
     <section className="pt-12 pb-8 lg:pt-16 lg:pb-10 bg-beige dark:bg-dark">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="text-center">
-          <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-2">Get Involved</p>
+          <BrandEyebrow center>Get Involved</BrandEyebrow>
           <h2 className="text-3xl mb-3 font-semibold text-darkprimary dark:text-white">
             How can you help us?
           </h2>
@@ -18,9 +22,9 @@ const Help = () => {
             {helpdata.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col gap-5 items-center xl:px-3 bg-white dark:bg-darkmode rounded-2xl p-8 border border-beige-dark dark:border-dark_border shadow-sm"
+                className={`flex flex-col gap-5 items-center xl:px-3 bg-white dark:bg-darkmode rounded-2xl p-8 border border-beige-dark dark:border-dark_border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${cardTopOnly[index % 3]}`}
               >
-                <div>
+                <div className={iconWrapOnly[index % 3]}>
                   <Image src={item?.icon} alt="icon" width={60} height={60} />
                 </div>
                 <div className="flex flex-col gap-3.5">

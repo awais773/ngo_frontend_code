@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 const phone = "+92 1234567890";
-const email = "info@myprophetpbuh.org";
+const email = "info@verifiedneedy.org";
 
 const socialLinks = [
   { href: "#", label: "Facebook", icon: "mdi:facebook" },
@@ -19,7 +19,7 @@ const TopBar = () => {
           <Link
             href="/contact"
             aria-label="Contact Support"
-            className="inline-flex shrink-0 items-center gap-1.5 text-white/90 hover:text-accent transition-colors"
+            className="inline-flex shrink-0 items-center gap-1.5 text-white/90 hover:text-secondary transition-colors"
           >
             <Icon icon="mdi:headset" className="text-base shrink-0" />
             <span className="hidden sm:inline">Contact Support</span>
@@ -30,7 +30,7 @@ const TopBar = () => {
             <Link
               href={`tel:${phone.replace(/\s/g, "")}`}
               aria-label={`Call ${phone}`}
-              className="inline-flex items-center gap-1.5 text-white/90 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-white/90 hover:text-secondary transition-colors"
             >
               <Icon icon="mdi:phone" className="text-base shrink-0" />
               <span className="hidden min-[420px]:inline">{phone}</span>
@@ -43,7 +43,7 @@ const TopBar = () => {
             <Link
               href={`mailto:${email}`}
               aria-label={`Email ${email}`}
-              className="inline-flex items-center gap-1.5 text-white/90 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-white/90 hover:text-secondary transition-colors"
             >
               <Icon icon="mdi:email-outline" className="text-base shrink-0" />
               <span className="hidden lg:inline">{email}</span>
@@ -59,7 +59,7 @@ const TopBar = () => {
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/25 text-white/90 hover:border-accent hover:text-accent transition-colors"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/25 text-white/90 hover:border-secondary hover:text-secondary transition-colors"
                 >
                   <Icon icon={item.icon} className="text-sm" />
                 </Link>

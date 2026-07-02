@@ -37,30 +37,30 @@
   --z-index-2: 2;
   --z-index-999: 999;
 
-  /* Brand green — client color #2e4f2f (Masjid Nabwi dome green) */
-  --color-darkprimary: #2e4f2f;
-  --color-primary: #3a613c;
-  --color-secondary: #456845;
-  --color-accent: #C5A028;
-  --color-gold: #C5A028;
-  --color-gold-light: #E5C76B;
-  --color-gold-dark: #A8871F;
-  --color-beige: #F5EDE0;
-  --color-beige-dark: #E8DFD0;
-  --color-beige-light: #FAF6F0;
-  --color-midnight_text: #2e4f2f;
-  --color-muted: #7A8578;
+  /* Verified Needy logo palette — navy #1B2B5B, bright blue #00AEEF, green #39B54A */
+  --color-darkprimary: #1B2B5B;
+  --color-primary: #243670;
+  --color-secondary: #00AEEF;
+  --color-accent: #39B54A;
+  --color-gold: #39B54A;
+  --color-gold-light: #5BC06A;
+  --color-gold-dark: #2E9E3E;
+  --color-beige: #F0F5FA;
+  --color-beige-dark: #E2EAF3;
+  --color-beige-light: #F8FAFC;
+  --color-midnight_text: #1B2B5B;
+  --color-muted: #64748b;
   --color-error: #ff4d7e;
   --color-warning: #ff6a5b;
-  --color-light_grey: #F5EDE0;
-  --color-grey: #FAF6F0;
-  --color-border: #E8DFD0;
-  --color-success: #2e4f2f;
-  --color-darkmode: #1f3520;
-  --color-darklight: #243f25;
-  --color-dark_border: #3d5540;
-  --color-dark: #1a2e1b;
-  --color-dustGray: #5C665E;
+  --color-light_grey: #F0F5FA;
+  --color-grey: #F8FAFC;
+  --color-border: #DDE5EF;
+  --color-success: #39B54A;
+  --color-darkmode: #121f42;
+  --color-darklight: #172a52;
+  --color-dark_border: #2a3f72;
+  --color-dark: #0f1a38;
+  --color-dustGray: #475569;
   --color-white: #FFFFFF;
 }
 
@@ -137,14 +137,14 @@ body {
   0%,
   100% {
     opacity: 1;
-    text-shadow: 0 0 0 rgba(197, 160, 40, 0);
+    text-shadow: 0 0 0 rgba(57, 181, 74, 0);
     transform: scale(1);
   }
   50% {
     opacity: 0.82;
     text-shadow:
-      0 0 10px rgba(197, 160, 40, 0.55),
-      0 0 18px rgba(46, 79, 47, 0.25);
+      0 0 10px rgba(57, 181, 74, 0.55),
+      0 0 18px rgba(0, 174, 239, 0.25);
     transform: scale(1.02);
   }
 }
@@ -169,12 +169,12 @@ body {
   100% {
     transform: scale(1);
     opacity: 1;
-    filter: drop-shadow(0 0 18px rgba(197, 160, 40, 0.35));
+    filter: drop-shadow(0 0 18px rgba(57, 181, 74, 0.35));
   }
   50% {
     transform: scale(1.1);
     opacity: 0.72;
-    filter: drop-shadow(0 0 34px rgba(197, 160, 40, 0.65));
+    filter: drop-shadow(0 0 34px rgba(0, 174, 239, 0.45));
   }
 }
 
@@ -187,6 +187,236 @@ body {
   .prophet-dome-blink {
     animation: none;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prophet-dome-blink {
+    animation: none;
+  }
+}
+
+/* ── Verified Needy brand utilities (navy · blue · green) ── */
+.brand-stripe {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-darkprimary) 0%,
+    var(--color-secondary) 50%,
+    var(--color-accent) 100%
+  );
+}
+
+.brand-hero-overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(27, 43, 91, 0.9) 0%,
+    rgba(27, 43, 91, 0.72) 42%,
+    rgba(0, 174, 239, 0.38) 100%
+  );
+}
+
+.brand-section-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(27, 43, 91, 0.92) 0%,
+    rgba(36, 54, 112, 0.85) 55%,
+    rgba(0, 174, 239, 0.25) 100%
+  );
+}
+
+.brand-eyebrow {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brand-eyebrow-mark {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 0.625rem;
+}
+
+.brand-eyebrow-mark span {
+  display: block;
+  width: 1.75rem;
+  height: 3px;
+  border-radius: 9999px;
+}
+
+.brand-eyebrow-mark span:nth-child(1) {
+  background: var(--color-darkprimary);
+}
+
+.brand-eyebrow-mark span:nth-child(2) {
+  background: var(--color-secondary);
+}
+
+.brand-eyebrow-mark span:nth-child(3) {
+  background: var(--color-accent);
+}
+
+.btn-brand-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: var(--color-accent);
+  padding: 0.875rem 2rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(57, 181, 74, 0.28);
+  transition: background-color 150ms, transform 150ms, box-shadow 150ms;
+}
+
+.btn-brand-primary:hover {
+  background: var(--color-gold-light);
+  box-shadow: 0 12px 28px rgba(57, 181, 74, 0.35);
+}
+
+.btn-brand-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: var(--color-darkprimary);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 150ms;
+}
+
+.btn-brand-secondary:hover {
+  background: var(--color-primary);
+}
+
+.btn-brand-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-secondary);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 150ms, color 150ms, border-color 150ms;
+}
+
+.btn-brand-outline:hover {
+  background: var(--color-secondary);
+  color: var(--color-darkprimary);
+}
+
+.btn-brand-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-darkprimary);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  color: var(--color-darkprimary);
+  transition: background-color 150ms, color 150ms;
+}
+
+.btn-brand-outline-dark:hover {
+  background: var(--color-darkprimary);
+  color: #fff;
+}
+
+.brand-progress-track {
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: var(--color-beige-dark);
+}
+
+.brand-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0%,
+    var(--color-secondary) 100%
+  );
+}
+
+.brand-card-accent-navy {
+  border-top: 3px solid var(--color-darkprimary);
+}
+
+.brand-card-accent-blue {
+  border-top: 3px solid var(--color-secondary);
+}
+
+.brand-card-accent-green {
+  border-top: 3px solid var(--color-accent);
+}
+
+.brand-icon-wrap-navy {
+  display: flex;
+  height: 3.75rem;
+  width: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-darkprimary) 12%, transparent);
+}
+
+.brand-icon-wrap-blue {
+  display: flex;
+  height: 3.75rem;
+  width: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-secondary) 14%, transparent);
+}
+
+.brand-icon-wrap-green {
+  display: flex;
+  height: 3.75rem;
+  width: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.brand-page-hero {
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(
+    180deg,
+    var(--color-beige-light) 0%,
+    #fff 100%
+  );
+}
+
+.dark .brand-page-hero {
+  border-bottom-color: var(--color-dark_border);
+  background: linear-gradient(180deg, var(--color-dark) 0%, var(--color-darkmode) 100%);
+}
+
+.brand-page-title {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.brand-page-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    var(--color-darkprimary) 0%,
+    var(--color-secondary) 50%,
+    var(--color-accent) 100%
+  );
 }
 
 /* Rich text from admin editor (blogs, pages, events) */
@@ -265,7 +495,7 @@ body {
 }
 
 .dark .rich-content a {
-  color: var(--color-accent);
+  color: var(--color-secondary);
 }
 
 .rich-content a:hover {

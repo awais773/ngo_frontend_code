@@ -41,10 +41,12 @@ export default function Hero({ sliders }: HeroProps) {
         />
       ))}
 
+      <div className="absolute inset-0 brand-hero-overlay z-[1]" />
+
       <div className="relative z-10 container mx-auto px-4 py-14 lg:py-20 flex items-center min-h-[580px] lg:min-h-[640px]">
         <div className="max-w-2xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
           {slide.subtitle && (
-            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-accent text-darkprimary">
+            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-secondary/90 text-white border border-white/20">
               {slide.subtitle}
             </span>
           )}
@@ -57,11 +59,11 @@ export default function Hero({ sliders }: HeroProps) {
           <div className="flex flex-wrap gap-4">
             <Link
               href={slide.button_link || "/donate"}
-              className="bg-gradient-to-r from-accent via-gold-light to-gold-dark text-darkprimary px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-accent/25 hover:from-gold-light hover:via-accent hover:to-gold-dark transition-all duration-200"
+              className="btn-brand-primary"
             >
               {slide.button_text || "Donate Now"}
             </Link>
-            <Link href="/projects" className="border-2 border-white px-8 py-3.5 rounded-xl font-semibold text-white hover:bg-white hover:text-darkprimary transition-all duration-200">
+            <Link href="/projects" className="btn-brand-outline">
               Our Projects
             </Link>
           </div>
@@ -72,7 +74,7 @@ export default function Hero({ sliders }: HeroProps) {
                   key={i}
                   type="button"
                   onClick={() => setActive(i)}
-                  className={`h-2 rounded-full transition-all ${i === active ? "w-8 bg-accent" : "w-2 bg-white/40"}`}
+                  className={`h-2 rounded-full transition-all ${i === active ? "w-8 bg-gradient-to-r from-accent to-secondary" : "w-2 bg-white/40"}`}
                   aria-label={`Slide ${i + 1}`}
                 />
               ))}

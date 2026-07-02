@@ -14,18 +14,19 @@ const bricolage = Bricolage_Grotesque({
   preload: true,
 });
 import ToasterContext from '@/app/api/contex/ToasetContex';
+import { brandLogos, brandName, brandTagline } from "@/config/brand";
 
 export const metadata = {
-  title: { default: "My Prophet", template: "%s | My Prophet" },
-  description: "Sharing the light of the Prophet — humanitarian relief, donations, zakat, and community support.",
+  title: { default: brandName, template: `%s | ${brandName}` },
+  description: `${brandTagline} — verified humanitarian support, donations, and community relief.`,
   icons: {
     icon: [
       { url: "/favicon.ico" },
       { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/images/logo/my-prophet-logo.png", type: "image/png", sizes: "512x512" },
+      { url: brandLogos.icon, type: "image/png", sizes: "512x512" },
     ],
     shortcut: "/favicon.ico",
-    apple: "/images/logo/my-prophet-logo.png",
+    apple: brandLogos.icon,
   },
 };
 

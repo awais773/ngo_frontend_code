@@ -17,7 +17,8 @@ const PageHero: React.FC<PageHeroProps> = ({ title, breadcrumbs }) => {
   ];
 
   return (
-    <section className="mt-[106px] border-b border-gray-200 bg-white dark:border-white/10 dark:bg-dark">
+    <section className="mt-[106px] brand-page-hero dark:bg-dark">
+      <div className="brand-stripe" />
       <div className="container mx-auto max-w-(--breakpoint-xl) px-4 py-8 sm:py-10">
         <nav aria-label="Breadcrumb" className="mb-3">
           <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
@@ -31,7 +32,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, breadcrumbs }) => {
                 {crumb.href && index < crumbs.length - 1 ? (
                   <Link
                     href={crumb.href}
-                    className="hover:text-darkprimary dark:hover:text-accent transition-colors"
+                    className="hover:text-secondary dark:hover:text-secondary transition-colors"
                   >
                     {crumb.label}
                   </Link>
@@ -42,7 +43,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, breadcrumbs }) => {
             ))}
           </ol>
         </nav>
-        <h1 className="text-2xl font-bold text-darkprimary sm:text-3xl lg:text-4xl dark:text-white">
+        <h1 className="brand-page-title text-2xl font-bold text-darkprimary sm:text-3xl lg:text-4xl dark:text-white">
           {title}
         </h1>
       </div>

@@ -19,7 +19,7 @@ import { UserRegistered } from "@/components/Auth/AuthDialog/UserRegistered";
 import ClientOnly from "@/components/Common/ClientOnly";
 
 const memberButtonClass =
-  "inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-bold text-darkprimary shadow-sm border border-gold-dark/30 hover:bg-gold-light hover:border-gold-light transition-all duration-200";
+  "inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-bold text-white shadow-sm shadow-accent/20 hover:bg-gold-light transition-all duration-200";
 
 const Header: React.FC = () => {
   const pathname = usePathname();
@@ -60,8 +60,8 @@ const Header: React.FC = () => {
       <div
         className={`w-full ${
         sticky
-          ? "bg-white/98 dark:bg-dark/98 backdrop-blur-lg shadow-lg border-b-2 border-accent"
-          : "bg-white dark:bg-dark border-b-2 border-accent"
+          ? "bg-white/98 dark:bg-dark/98 backdrop-blur-lg shadow-lg border-b-2 border-secondary"
+          : "bg-white dark:bg-dark border-b-2 border-secondary"
       }`}
       >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">

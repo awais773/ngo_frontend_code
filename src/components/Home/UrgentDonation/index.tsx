@@ -13,10 +13,12 @@ const UrgentDonation = ({ totalRaised = 0 }: Props) => {
 
   return (
     <section className="bg-[url('/images/background/donate-banner.jpg')] bg-cover bg-center py-12 sm:py-16 bg-no-repeat relative">
-      <div className="absolute inset-0 bg-darkprimary/75" />
+      <div className="absolute inset-0 brand-section-overlay" />
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4 relative z-10">
-        <div className="bg-white dark:bg-darkmode max-w-xl w-full px-10 py-12 rounded-2xl text-center mx-auto shadow-2xl border border-beige-dark dark:border-dark_border">
-          <p className="text-accent font-bold text-sm uppercase tracking-wide mb-2">Together we&apos;ve raised</p>
+        <div className="bg-white dark:bg-darkmode max-w-xl w-full rounded-2xl text-center mx-auto shadow-2xl border border-beige-dark dark:border-dark_border overflow-hidden">
+          <div className="brand-stripe" />
+          <div className="px-10 py-12">
+          <p className="text-secondary font-bold text-sm uppercase tracking-wide mb-2">Together we&apos;ve raised</p>
           <p className="text-4xl font-bold text-darkprimary dark:text-white mb-4">
             ${Number(totalRaised).toLocaleString()}
           </p>
@@ -30,13 +32,14 @@ const UrgentDonation = ({ totalRaised = 0 }: Props) => {
             <button
               type="button"
               onClick={() => donationInfo?.setIsDonationOpen(true)}
-              className="bg-accent text-darkprimary px-8 py-3.5 rounded-lg font-bold hover:bg-gold-light cursor-pointer transition"
+              className="btn-brand-primary cursor-pointer"
             >
               Donate Now
             </button>
-            <Link href="/zakat-calculator" className="border-2 border-darkprimary text-darkprimary dark:border-accent dark:text-accent px-8 py-3.5 rounded-lg font-semibold hover:bg-darkprimary hover:text-white dark:hover:bg-accent dark:hover:text-darkprimary transition">
+            <Link href="/zakat-calculator" className="btn-brand-outline-dark">
               Calculate Zakat
             </Link>
+          </div>
           </div>
         </div>
       </div>

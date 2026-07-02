@@ -4,7 +4,7 @@ import Volunteer from "@/components/SharedComponent/Volunteer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Events | My Prophet",
+  title: "Events",
 };
 
 const Page = () => {

@@ -7,11 +7,12 @@ import HomeTestimonials from "@/components/Home/HomeTestimonials";
 import UrgentDonation from "@/components/Home/UrgentDonation";
 import Volunteer from "@/components/SharedComponent/Volunteer";
 import { getHomeData } from "@/lib/api";
+import { brandName, brandTagline } from "@/config/brand";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NGO | International Charity Organization",
-  description: "NGO — humanitarian relief, donations, zakat, fitrana, and community support worldwide.",
+  title: `${brandName} | Verified Humanitarian Support`,
+  description: `${brandTagline} — donations, verified needy cases, and community relief worldwide.`,
 };
 
 export default async function Home() {

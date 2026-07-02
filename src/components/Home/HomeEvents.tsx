@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
+import BrandEyebrow from "@/components/Common/BrandEyebrow";
 import type { EventItem } from "@/lib/api";
 import { mediaUrl } from "@/lib/api";
 
@@ -15,9 +16,8 @@ export default function HomeEvents({ events }: Props) {
     <section className="pt-8 pb-12 lg:pt-10 lg:pb-14 bg-beige dark:bg-dark" data-aos="fade-up" data-aos-duration="1200">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="text-center mb-10">
-          <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-2">Community</p>
-          <h2 className="text-3xl font-semibold mb-3 text-darkprimary dark:text-white">Upcoming Events</h2>
-          <p className="text-dustGray dark:text-white/60 max-w-2xl mx-auto">
+          <BrandEyebrow center>Community</BrandEyebrow>
+          <h2 className="text-3xl font-semibold mb-3 text-darkprimary dark:text-white">Upcoming Events</h2>          <p className="text-dustGray dark:text-white/60 max-w-2xl mx-auto">
             Join us at local and international events to support our mission.
           </p>
         </div>
@@ -44,15 +44,13 @@ export default function HomeEvents({ events }: Props) {
                   </div>
                 )}
               </div>
-              <h4 className="text-lg font-semibold mb-2 text-darkprimary dark:text-white group-hover:text-primary dark:group-hover:text-accent">{item.title}</h4>
+              <h4 className="text-lg font-semibold mb-2 text-darkprimary dark:text-white group-hover:text-secondary dark:group-hover:text-secondary">{item.title}</h4>
               <p className="text-sm text-dustGray dark:text-white/60 line-clamp-2">{item.description}</p>
-              {item.location && <p className="text-xs text-accent mt-2 font-medium">{item.location}</p>}
-            </Link>
+              {item.location && <p className="text-xs text-secondary mt-2 font-medium">{item.location}</p>}            </Link>
           ))}
         </div>
         <div className="text-center mt-12">
-          <Link href="/events" className="inline-block border-2 border-darkprimary text-darkprimary dark:text-white dark:border-accent px-8 py-3 rounded-lg font-semibold hover:bg-darkprimary hover:text-white dark:hover:bg-accent dark:hover:text-darkprimary transition">
-            View All Events
+          <Link href="/events" className="btn-brand-outline-dark">            View All Events
           </Link>
         </div>
       </div>
